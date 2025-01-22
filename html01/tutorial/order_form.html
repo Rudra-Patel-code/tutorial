@@ -3,8 +3,31 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title></title>
-        <link href="css/style.css" rel="stylesheet" />
+        <title>Order Form</title>
+
+        <style>
+            fieldset {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                max-width: 380px;
+            }
+
+            form fieldset input {
+                float: right;
+                margin: 5px;
+                margin-right: 5%;
+            }
+            button {
+                margin: 20px;
+                max-width: 100px;
+            }
+
+            ul li {
+                display: flex;
+                justify-content: space-between;
+            }
+        </style>
     </head>
 
     <body>
@@ -24,18 +47,57 @@
                     <input type="text" name="name" />
                 </label>
 
-                <br />
-                <br />
-
                 <label for="address"
                     >Address:
                     <input type="text" name="address" />
                 </label>
 
-                <br />
-                <br />
+                <label for="phone"
+                    >Telephone:
+                    <input type="text" name="phone" />
+                </label>
+
+                <label for="email"
+                    >Email:
+                    <input type="email" name="email" />
+                </label>
 
                 <button type="submit">Submit</button>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>Delivery Instructions</legend>
+                <p>Limit character length. Max limit of 400 characters</p>
+
+                <textarea rows="5" cols="40"> </textarea>
+            </fieldset>
+
+            <br />
+
+            <fieldset>
+                <legend>Design Your own Dream Pizza</legend>
+                <h4>Pizza Specifications</h4>
+
+                <h5>Crust (choose one)</h5>
+                <ul>
+                    <li>
+                        Classic Whites
+                        <input type="radio" name="crust" checked />
+                    </li>
+
+                    <li>
+                        Multigrain
+                        <input type="radio" name="crust" />
+                    </li>
+                    <li>
+                        Cheese-stuffed crust
+                        <input type="radio" name="crust" />
+                    </li>
+                    <li>
+                        Gluten-free
+                        <input type="radio" name="crust" />
+                    </li>
+                </ul>
             </fieldset>
         </form>
     </body>
