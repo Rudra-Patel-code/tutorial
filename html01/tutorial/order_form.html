@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Order Form</title>
-
+        <!--This is called embedded styling-->
         <style>
+            p {
+                width: 50%;
+            }
+
             fieldset {
+                background-color: lightblue;
+                border-radius: 8px;
+            }
+            input {
+                border-radius: 5px;
+                border: 1px solid grey;
+            }
+            form fieldset {
                 display: flex;
+                margin: 0 auto;
                 flex-direction: column;
                 justify-content: flex-end;
                 max-width: 380px;
@@ -18,25 +28,32 @@
                 margin: 5px;
                 margin-right: 5%;
             }
+
             button {
                 margin: 20px;
                 max-width: 100px;
             }
 
-            ul li {
+            #buttons {
                 display: flex;
-                justify-content: space-between;
+                background-color: lightblue;
+                border: 1px solid black;
+                flex-direction: row;
+                max-width: 380px;
+                margin: 0 auto;
+                border-radius: 5px;
             }
         </style>
     </head>
 
     <body>
-        <h2>Black Goose Bistro | Pizza On Demand</h2>
-
-        <p>
-            Our 12" wood-fired pizza are available for delivery. Built your own
-            custom pizza and we will deliver it in an hour.
-        </p>
+        <center>
+            <h2>Black Goose Bistro | Pizza On-Demand</h2>
+            <p>
+                Our 12" wood-fired pizza are available for delivery. Build your
+                own custom pizza and we will deliver it in an hour.
+            </p>
+        </center>
 
         <form action="action_page.php">
             <fieldset>
@@ -61,44 +78,133 @@
                     >Email:
                     <input type="email" name="email" />
                 </label>
-
-                <button type="submit">Submit</button>
             </fieldset>
             <br />
             <fieldset>
                 <legend>Delivery Instructions</legend>
                 <p>Limit character length. Max limit of 400 characters</p>
-
-                <textarea rows="5" cols="40"> </textarea>
+                <textarea rows="5" cols="40"></textarea>
             </fieldset>
-
             <br />
-
             <fieldset>
                 <legend>Design Your own Dream Pizza</legend>
                 <h4>Pizza Specifications</h4>
 
                 <h5>Crust (choose one)</h5>
-                <ul>
+                <ul
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        max-width: 200px;
+                    "
+                >
                     <li>
-                        Classic Whites
-                        <input type="radio" name="crust" checked />
+                        Classic White<input type="radio" name="crust" checked />
                     </li>
+                    <li>Multigrain<input type="radio" name="crust" /></li>
+                    <li>
+                        Cheese-stuffed crust<input type="radio" name="crust" />
+                    </li>
+                    <li>Gluten-free<input type="radio" name="crust" /></li>
+                </ul>
+            </fieldset>
 
+            <fieldset>
+                <legend>Toppings</legend>
+                <h4>Choose as many as you want.</h4>
+
+                <ul
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        max-width: 200px;
+                    "
+                >
                     <li>
-                        Multigrain
-                        <input type="radio" name="crust" />
+                        White Sauce<input
+                            type="radio"
+                            class="toppings"
+                            id="topping1"
+                            checked
+                        />
                     </li>
                     <li>
-                        Cheese-stuffed crust
-                        <input type="radio" name="crust" />
+                        Red Sauce<input
+                            type="radio"
+                            class="toppings"
+                            id="topping2"
+                        />
                     </li>
                     <li>
-                        Gluten-free
-                        <input type="radio" name="crust" />
+                        Mozzarella Cheese<input
+                            type="radio"
+                            class="toppings"
+                            id="topping3"
+                        />
+                    </li>
+                    <li>
+                        Pepperoni<input
+                            type="radio"
+                            class="toppings"
+                            id="topping4"
+                        />
+                    </li>
+                    <li>
+                        Mushrooms<input
+                            type="radio"
+                            class="toppings"
+                            id="topping5"
+                        />
+                    </li>
+                    <li>
+                        Peppers<input
+                            type="radio"
+                            class="toppings"
+                            id="topping6"
+                        />
+                    </li>
+                    <li>
+                        Anchovies<input
+                            type="radio"
+                            class="toppings"
+                            id="topping7"
+                        />
                     </li>
                 </ul>
             </fieldset>
+
+            <fieldset>
+                <legend>Additional Info</legend>
+                <label for="number">
+                    Number of Pizzas:
+                    <input type="number" name="number" max="10" />
+                </label>
+            </fieldset>
+
+            <div id="buttons">
+                <button>Submit</button>
+                <button>Subscribe</button>
+                <button>Reset</button>
+            </div>
         </form>
+
+        <script>
+            const toppings = document.querySelectorAll(".toppings");
+            let checked = ["topping1"];
+            console.log(checked);
+
+            toppings.forEach((topping) => {
+                topping.addEventListener("click", (e) => {
+                    if (checked.includes(topping.id)) {
+                        topping.checked = false;
+                        checked = checked.filter((id) => id !== topping.id);
+                    } else {
+                        checked.push(topping.id);
+                    }
+
+                    console.log(checked);
+                });
+            });
+        </script>
     </body>
 </html>
